@@ -1,0 +1,93 @@
+main {
+  h1,
+  li::marker {
+    color: hsl(27deg 90% 40%);
+  }
+
+  h2 {
+    color: hsl(27deg 90% 35%);
+  }
+
+  a {
+    color: hsl(27deg 90% 45%);
+  }
+
+  h1::after {
+    background-color: hsl(27deg 90% 35%);
+    border-radius: 0.25rem;
+    content: "";
+    display: block;
+    height: 0.25rem;
+    width: 5rem;
+    margin-top: 0.2em;
+    transition: all linear 500ms;
+  }
+
+  h1:hover::after {
+    width: 8rem;
+  }
+}
+
+.red-theme {
+  .research-card {
+    border-top-color: hsl(355deg 80% 60%);
+  }
+
+  h2,
+  a {
+    color: hsl(355deg 80% 40%);
+  }
+
+  h3,
+  li::marker {
+    color: hsl(355deg 80% 30%);
+  }
+}
+
+.lime-theme {
+  .research-card {
+    border-top-color: hsl(75deg 60% 55%);
+  }
+
+  h2,
+  a {
+    color: hsl(75deg 60% 35%);
+  }
+
+  h3,
+  li::marker {
+    color: hsl(75deg 60% 30%);
+  }
+}
+
+.blue-theme {
+  .research-card {
+    border-top-color: hsl(220deg 60% 55%);
+  }
+
+  h2,
+  a {
+    color: hsl(220deg 60% 35%);
+  }
+
+  h3,
+  li::marker {
+    color: hsl(220deg 60% 30%);
+  }
+}
+
+.cyan-theme {
+  .research-card {
+    border-top-color: hsl(180deg 50% 55%);
+  }
+
+  h2,
+  a {
+    color: hsl(180deg 50% 35%);
+  }
+
+  h3,
+  li::marker {
+    color: hsl(180deg 50% 25%);
+  }
+}

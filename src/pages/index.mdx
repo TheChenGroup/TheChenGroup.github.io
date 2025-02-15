@@ -1,0 +1,43 @@
+---
+layout: ../layouts/Layout.astro
+---
+
+import "../styles/index-page.css"
+import GroupPhoto from "../components/GroupPhoto.astro";
+import photo from "../images/photos/2024-longqingxia.avif"
+import ResearchInterest from "../components/ResearchInterest.astro"
+import ResearchCard from "../components/ResearchCard.astro"
+
+<GroupPhoto photo={photo} />
+
+# Research Interests
+
+<div class="research-interest-list">
+  <ResearchInterest class="red-theme" image="research/deep-learning-qmc.svg">
+    [**Deep learning<br />quantum Monte Carlo**](/research#neural-network-based-quantum-monte-carlo)
+  </ResearchInterest>
+
+  <ResearchInterest class="lime-theme" image="research/correlated-electron.avif">
+    [**Strongly correlated<br />electronic structure**](/research#strongly-correlated-electronic-structure)
+  </ResearchInterest>
+
+  <ResearchInterest class="blue-theme" image="research/carbon-and-water.avif">
+    [**Water and carbon:<br />structures & dynamics**](/research#water-and-carbon-structures-and-dynamics)
+  </ResearchInterest>
+
+  <ResearchInterest class="cyan-theme" image="research/ml-material.svg">
+    [**AI-assisted<br />materials modeling**](/research#ai-assisted-materials-modeling)
+  </ResearchInterest>
+</div>
+
+# Research Highlights
+
+<ResearchCard image="research/2024-spin-penalty.avif">
+  ### Spin-symmetry-enforced deep learning quantum Monte Carlo
+
+  Optimiztions in deep learning quantum Monte Carlo methods are not guaranteed to produce quantum states with the desired spin symmetry. This work introduces a low-scaling penalty term that enforces spin symmetry with minimal computational overhead, achieving higher accuracy and efficiency for excited-state calculations.
+
+  - [Z. Li *et al.* Nat Comput Sci 4, 910 (2024)](https://doi.org/10.1038/s43588-024-00730-4)
+</ResearchCard>
+
+See the [research page](/research) and [publication list](/publications) for more information.

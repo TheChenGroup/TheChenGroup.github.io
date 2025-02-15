@@ -1,0 +1,26 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import { getImageMetadata } from "../images";
+
+interface Props {
+  image: string | ImageMetadata;
+  class?: string;
+}
+
+const image = await getImageMetadata(Astro.props.image);
+---
+
+<div class:list={["research-interest", Astro.props.class]}>
+  <Image src={image} alt="" width={200} densities={[1.5, 2]} />
+  <div class="research-description">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .research-interest {
+    width: 200px;
+    text-align: center;
+  }
+</style>

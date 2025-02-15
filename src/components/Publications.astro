@@ -1,0 +1,76 @@
+---
+interface Publication {
+  title: string;
+  doi: string;
+  year: number;
+  journal: string;
+  volume: string;
+  page: string;
+  authors: string[];
+}
+
+interface Props {
+  publications: Publication[];
+}
+
+const { publications } = Astro.props;
+
+let count = publications.filter((paper) => paper.journal !== "arXiv").length;
+const publicationGroup: Map<number, Publication[]> = new Map();
+let year = 0;
+for (const publication of publications) {
+  if (publication.year !== year) {
+    year = publication.year;
+    publicationGroup.set(year, []);
+  }
+  publicationGroup.get(year)?.push(publication);
+}
+---
+
+<>
+  {
+    publicationGroup.entries().map((value) => {
+      const [year, publications] = value;
+      return (
+        <>
+          <h2>{year}</h2>
+          <ol>
+            {publications.map((publication) => (
+              <li value={publication.journal === "arXiv" ? -1 : count--}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://doi.org/${publication.doi}`}
+                  set:html={publication.title}
+                />
+                <br />
+                {publication.authors.length > 5 ? (
+                  <>
+                    {publication.authors[0]}
+                    <em> et al.</em>,
+                  </>
+                ) : (
+                  publication.authors.join(", ") + ", "
+                )}
+                <em>{publication.journal}</em>{" "}
+                {publication.volume && <b>{publication.volume}</b>}
+                {publication.volume && publication.page && ","}{" "}
+                {publication.page} ({publication.year}).
+              </li>
+            ))}
+          </ol>
+        </>
+      );
+    })
+  }
+</>
+
+<style>
+  ol li:not(:first-of-type) {
+    margin-top: 0.5em;
+  }
+
+  ol li[value="-1"]::marker {
+    content: "arXiv: ";
+  }
+</style>

@@ -1,0 +1,16 @@
+main .arrow-right {
+  width: 1em;
+  height: 1em;
+  transition: all linear 200ms;
+}
+
+main .arrow-right:hover {
+  transform: translateX(2px);
+}
+
+main .research-interest-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  place-items: end center;
+  gap: 1rem;
+}

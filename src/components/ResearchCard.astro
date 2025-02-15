@@ -1,0 +1,46 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import { getImageMetadata } from "../images";
+
+interface Props {
+  image: string | ImageMetadata;
+}
+
+const image = await getImageMetadata(Astro.props.image);
+---
+
+<div class="research-card">
+  <div class="image-holder">
+    <Image src={image} width={400} densities={[1.5, 2]} alt="" />
+  </div>
+  <div class="research-description">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .research-card {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 20px 0;
+  }
+
+  .image-holder {
+    flex-basis: 10rem;
+    flex-grow: 1;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .research-description {
+    flex-basis: 20rem;
+    flex-grow: 2;
+  }
+</style>

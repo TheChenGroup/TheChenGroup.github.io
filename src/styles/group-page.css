@@ -1,0 +1,13 @@
+/* grid auto-fit will have align problems for two lists */
+.member-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (width <=650px) {
+  .member-list {
+    grid-template-columns: 1fr;
+  }
+}

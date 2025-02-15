@@ -1,0 +1,125 @@
+---
+import At from "~icons/mdi/at";
+import Email from "~icons/mdi/email";
+import Calendar from "~icons/mdi/calendar";
+import Flask from "~icons/mdi/flask";
+import { Image } from "astro:assets";
+import { getImageMetadata } from "../images";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  image: string | ImageMetadata;
+  name: string;
+  nameEn: string;
+  year: string;
+  email: string;
+  interest: string;
+}
+
+const { name, nameEn, year, email, interest } = Astro.props;
+
+const image = await getImageMetadata(Astro.props.image);
+---
+
+<div class="student">
+  <div class="image-holder">
+    <Image src={image} width={200} densities={[1.5, 2]} alt="" />
+  </div>
+  <div class="details">
+    <h3>{name}</h3>
+    <div class="name-en">{nameEn}</div>
+    <div class="list-item">
+      <Calendar class="bullet" />
+      <div class="text">{year}&ndash;present</div>
+    </div>
+    <div class="list-item">
+      <Email class="bullet" />
+      <div class="text">
+        {email.slice(0, email.indexOf("@"))}
+        <At class="at" />
+        <div class="invisible">no.robot.scrape</div>
+        {email.slice(email.indexOf("@") + 1)}
+      </div>
+    </div>
+    <div class="list-item">
+      <Flask class="bullet" />
+      <div class="text">{interest}</div>
+    </div>
+    <slot />
+  </div>
+</div>
+
+<style>
+  .student {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+    font-size: 0.9rem;
+    background-color: rgb(250 250 250);
+    margin: 10px;
+    padding: 10px;
+    padding-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    transition: all linear 200ms;
+  }
+
+  .student:hover {
+    transform: translateY(-5px);
+  }
+
+  .image-holder {
+    aspect-ratio: 3 / 4;
+    flex: 1 5 150px;
+    max-width: 220px;
+    display: flex;
+    justify-items: center;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+    object-fit: contain;
+  }
+
+  .details {
+    flex: 3 0.5 200px;
+    padding: 10px 0 10px 30px;
+  }
+
+  .details h3 {
+    margin-top: 5px;
+  }
+
+  .name-en {
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    color: hsl(27deg 90% 20%);
+  }
+
+  .list-item {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .details .bullet {
+    flex-shrink: 0;
+    color: hsl(27deg 90% 30%);
+    margin-top: 0.2em;
+    margin-right: 0.5em;
+  }
+
+  .details .at {
+    width: 1em;
+    height: 1em;
+    margin: 0 -4px;
+  }
+
+  .details .invisible {
+    display: none;
+  }
+</style>

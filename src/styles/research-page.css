@@ -1,0 +1,8 @@
+.research-card {
+  border-top-width: 1px;
+  border-top-style: dashed;
+}
+
+.research-card ul ul {
+  padding-left: 25px;
+}

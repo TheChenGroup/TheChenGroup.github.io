@@ -1,0 +1,112 @@
+---
+import "normalize.css";
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-600.css";
+import "@fontsource/inter/latin-700.css";
+import "@fontsource/inter/latin-400-italic.css";
+import "../styles/theme.css";
+import NavBar from "../components/NavBar.astro";
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+  title?: string;
+}>;
+const title = Astro.props.frontmatter.title;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>
+      {title ? `${title} | Ji Chen's Group` : "Ji Chen's Group"}
+    </title>
+  </head>
+
+  <body>
+    <NavBar />
+    <main>
+      <slot />
+    </main>
+  </body>
+
+  <footer>
+    <div>
+      <a href="https://github.com/TheChenGroup">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=wnMh2TIAAAAJ"
+        >Google Scholar</a
+      >
+      <a href="https://researchgate.net/profile/Ji_Chen27">ResearchGate</a>
+    </div>
+    <div>&copy; 2018&ndash;2025, Ji Chen's Group</div>
+  </footer>
+
+  <script>
+    const lastUpdate = parseInt(localStorage.getItem("lastUpdate") ?? "0", 10);
+    const currentTime = new Date().getTime();
+    if (currentTime - lastUpdate > 24 * 3600 * 1000) {
+      fetch("https://faculty.pku.edu.cn/system/resource/tsites/praise.jsp", {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: "uid=1959&homepageid=1623&apptype=index&contentid=0&pdtype=0&limttype=specilpage&limithour=0&ac=updatePraise",
+        method: "POST",
+        mode: "cors",
+      });
+      localStorage.setItem("lastUpdate", currentTime.toString());
+    }
+  </script>
+
+  <style is:global>
+    html {
+      overscroll-behavior: none;
+      font-size: 18px;
+      font-family:
+				/* Prefer English font, then system fonts */
+        Inter, Arial, Helvetica, sans-serif, ui-sans-serif, system-ui,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    }
+
+    :target {
+      scroll-margin-top: 5rem;
+    }
+
+    footer {
+      margin-bottom: 1rem;
+      margin-top: 4rem;
+      line-height: 2em;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    footer a {
+      color: #999;
+      margin: 0 5px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+      line-height: 1.5;
+    }
+
+    main a {
+      text-decoration: none;
+    }
+
+    main a:hover {
+      text-decoration: underline;
+    }
+
+    main svg {
+      vertical-align: sub;
+    }
+  </style>
+</html>

@@ -1,0 +1,171 @@
+---
+layout: ../layouts/Layout.astro
+title: Research
+---
+
+import ResearchCard from "../components/ResearchCard.astro"
+import "../styles/research-page.css"
+
+# Researches
+
+<div class="red-theme">
+  ## Deep Learning Quantum Monte Carlo
+
+  The deep learning quantum Monte Carlo (QMC) method provides new opportunities for solving electronic structure of molecules and materials, where the wavefunction is described by a neural network optimized based on the variational principle. This method has shown great promise in accurately determining ground-state and excited state wavefunctions, even for strongly-correlated systems, while keeping computational costs manageable.
+
+  <ResearchCard image="research/2024-spin-penalty.avif">
+    ### Spin-symmetry-enforced deep learning QMC
+
+    Optimiztions in deep learning QMC methods are not guaranteed to produce quantum states with the desired spin symmetry. We introduce a low-scaling penalty term that enforces spin symmetry with minimal computational overhead, achieving higher accuracy and efficiency for excited-state calculations.
+
+    - [Z. Li *et al.* Nat Comput Sci 4, 910 (2024)](https://doi.org/10.1038/s43588-024-00730-4)
+  </ResearchCard>
+
+  <ResearchCard image="research/2024-dmc-and-variance-extrapolation.avif">
+    ### Deep learning diffusion Monte Carlo and variance extrapolation
+
+    The accuracy of deep learning QMC energy results depends on the neural network's parameters and ansatz form. To further improve this, we combine deep learning QMC with diffusion Monte Carlo (DMC), leveraging the accurate wavefunction node structures from deep learning to achieve lower variational energy. Additionally, we identified a linear relationship between energy and local energy variance during training, enabling energy extrapolation. This significantly improves accuracy, with extrapolated relative energies aligning better with experimental results.
+
+    - [W. Ren *et al.* Nat. Commun. 14, 1860 (2023)](https:/doi.org/10.1038/s41467-023-37609-3)
+    - [W. Fu *et al.* Mach. Learn.: Sci. Technol. 5, 015016 (2024)](https://doi.org/10.1088/2632-2153/ad1f75)
+    - \[News] [成果 | 陈基课题组与合作者报道机器学习量子蒙特卡洛计算新进展](https://mp.weixin.qq.com/s/RBe9-bY-I2M4xZUaymRnjw)
+  </ResearchCard>
+
+  <ResearchCard image="research/2024-deepsolid.avif">
+    ### DeepSolid framework for QMC study of solids
+
+    Our DeepSolid framework enables deep learning QMC modeling of periodic systems, achieving excellent energy consistency with state-of-the-art methods. Beyond energy, DeepSolid addresses the challenge of calculating electric susceptibility in solids, a task hindered by the theoretical complexity of the Berry phase. While DFT remains the most common method, DeepSolid provides a robust and high-accuracy approach for electronic structures.
+
+    - [X. Li *et al.* Nat Commun 13, 1 (2022)](https://doi.org/10.1038/s41467-022-35627-1)
+    - [X. Li *et al.* Phys. Rev. Lett. 132, 176401 (2024)](https://doi.org/10.1103/PhysRevLett.132.176401)
+    - \[News] [业界首个适用于固体系统的神经网络波函数，登上 Nature 子刊](https://mp.weixin.qq.com/s/Bixqdk_57xZjangmneQkGQ)
+    - \[News] [成果 | 陈基课题组与合作者在神经网络量子蒙特卡洛计算固体电极化及原子间力上取得进展](https://mp.weixin.qq.com/s/WDukMRGHlqqSSzrVKy4gJQ)
+  </ResearchCard>
+
+  <ResearchCard image="research/2024-nnqmc-force.avif">
+    ### Interatomic force calculation with deep learning QMC
+
+    While most developments in deep learning QMC focus on energies, interatomic forces are crucial for understanding material properties and enabling simulations. To address the infinite variance problem, we evaluated existing force calculation methods and introduced the "fast warp" method. Testing across various systems demonstrates that "fast warp" is both more accurate and efficient than traditional approaches. This advancement further strengthens deep learning QMC as a promising *ab initio* technique.
+
+    - [Y. Qian *et al.* The Journal of Chemical Physics 157, 164104 (2022)](https://doi.org/10.1063/5.0112344)
+    - [Y. Qian *et al.* Faraday Discuss. 254, 529 (2024)](https://doi.org/10.1039/D4FD00071D)
+    - \[News] [成果 | 陈基课题组与合作者在神经网络量子蒙特卡洛计算固体电极化及原子间力上取得进展](https://mp.weixin.qq.com/s/WDukMRGHlqqSSzrVKy4gJQ)
+    - \[News] [成果 | 2019 级本科生钱昱冰实现神经网络量子蒙特卡洛原子间受力计算](https://mp.weixin.qq.com/s/GMc4vriMlC1NzfA29T7F4Q)
+  </ResearchCard>
+
+  <ResearchCard image="research/2024-forward-laplacian.avif">
+    ### Forward Laplacian framework for deep learning QMC
+
+    The primary bottleneck in deep learning QMC training is the calculation of the wavefunction's Laplacian, which traditionally requires computing the full Hessian matrix. Our forward Laplacian framework overcomes this by computing the Laplacian in a single forward pass, dramatically speeding up the process. We also introduce LapNet, a novel network architecture that exploits gradient sparsity and achieves O(n) acceleration without compromising accuracy. Together, these innovations expand the scalability of deep learning QMC and reduce its computational barriers, enabling broader applications.
+
+    - [R. Li *et al.* Nat Mach Intell 6, 209 (2024)](https://doi.org/10.1038/s42256-024-00794-x)
+    - \[News] [基于神经网络的偏微分方程求解器新突破：北大 & 字节研究成果入选 Nature 子刊](https://mp.weixin.qq.com/s/9gYXYQ3M3cm-fxikvEcAhQ)
+  </ResearchCard>
+</div>
+
+<div class="lime-theme">
+  ## Strongly Correlated Electronic Structure
+
+  Strongly correlated electronic systems, such as transition metal oxides, defects, and bond-breaking systems, present significant challenges for accurate theoretical modeling. These systems require highly precise quantum chemical methods to capture their complex behavior. State-of-the-art techniques, like Full Configuration Interaction Quantum Monte Carlo (FCIQMC), provide benchmark-quality data and critical insights into such strongly correlated systems, which are essential for advancing our understanding of electronic correlations in challenging materials and chemical processes.
+
+  <ResearchCard image="research/2023-nv-center.avif">
+    ### Multiconfigurational nature of electron correlation within NV-centers in diamond
+
+    To cope with the complex electron structure within NV-center, we develop a quantum embedding scheme, dubbed Density-Matrix Functional Embedding Theory (DMFET). This methods features highly accurate depiction near defect region, inherited from FCIQMC, while keeps low cost for environment regions by combining DFT. Our method sets a new benchmark for NV center states energies, and also provides a many-body view for understanding physical processes such as excitation. This work showcases a new way for calculating and understanding electronic in point defect systems.
+
+    - [Y. Chen *et al.* Phys. Rev. B 108, 045111 (2023)](https://doi.org/10.1103/PhysRevB.108.045111)
+  </ResearchCard>
+
+  <ResearchCard image="research/2022-fciqmc-force.avif">
+    ### General Analytical Nuclear Forces and Molecular Potential Energy Surface from FCIQMC
+
+    We extend FCIQMC to calculate nuclear forces and potential energy surfaces, enabling unbiased sampling of force and flexible orbital selection. By combining FCIQMC with Gaussian process regression, we successfully modeled water's potential energy surface and performed path integral molecular dynamics. Numerical tests demonstrate robust stability. This opens new avenues to explore the interplay between nuclear dynamics and electronic correlation.
+
+    - [T. Jiang *et al.* J. Chem. Theory Comput. 18, 7233 (2022)](https://doi.org/10.1021/acs.jctc.2c00440)
+  </ResearchCard>
+
+  <ResearchCard image="research/2023-fciqmc-graph.avif">
+    ### Graphic Characterization and Clustering Configuration Descriptors of Determinant Space for Molecules
+
+    FCIQMC is a powerful method for strongly correlated electronic structures, but wavefunction analysis remains limited. We introduce a graphical analysis approach, revealing that configuration clustering captures the system's strong correlation. Two descriptors are proposed to quantify correlation strength and configuration importance, offering a new standard for selecting key configurations. This method shows strong potential for future applications in analyzing correlated systems.
+
+    - [L. Sun *et al.* J. Chem. Theory Comput. 19, 2282 (2023)](https://doi.org/10.1021/acs.jctc.3c000761)
+    - \[News] [成果| 2019级本科生孙磊、张子羲提出基于全组态量子蒙特卡洛的波函数分析方法](https://mp.weixin.qq.com/s/ZbVoMZJEby-Gi8tcZKIQ2g)
+  </ResearchCard>
+</div>
+
+<div class="blue-theme">
+  ## Water and Carbon: Structures and Dynamics
+
+  Water and carbon are fundamental elements with complex structures and dynamics. As Prof. Enge Wang noted, "Water: soft in nature, hard in science," its behavior in pure form, solutions, and interfaces is deeply intriguing. Carbon, with its diverse allotropes and transformations, is equally versatile. Together, they drive interdisciplinary research in physics, chemistry, materials science, energy, and environmental science, offering insights into catalysis, sustainability, and beyond.
+
+  <ResearchCard image="research/2020-ammonium-in-water.avif">
+    ### Hydration of NH<sub>4</sub><sup>+</sup> in Water: Bifurcated Hydrogen Bonding Structures and Fast Rotational Dynamics
+
+    - [J. Guo *et al.* Phys. Rev. Lett. 125, 106001 (2020)](https://doi.org/10.1103/PhysRevLett.125.106001)
+    - \[News] [Jianqing Guo et al. reveals hydration structure and dynamics of ammonium ion in water using computational simulations](http://english.phy.pku.edu.cn/info/1031/4511.htm)
+  </ResearchCard>
+
+  <ResearchCard image="research/2022-water-on-metal.avif">
+    ### Visualizing Eigen/Zundel cations and their interconversion in monolayer water on metal surfaces
+
+    Using path integral molecular dynamics, we simulate how hydrated protons (Eigen and Zundel cations) behave on Au(111) and Pt(111) surfaces. Nuclear quantum effects stabilize ordered Zundel structures, while Eigen cations form local monolayers. Simulations reveal a coupled Eigen-Zundel interconversion via interfacial proton transfer, with Pt(111) favoring Zundel configurations---unlike Au(111). These quantum-level insights advance understanding of proton dynamics in hydrogen evolution and surface-specific electrochemical processes.
+
+    - [Y. Tian *et al.* Science 377, 315 (2022)](https://doi.org/10.1126/science.abo0823)
+  </ResearchCard>
+
+  <ResearchCard image="research/2023-cubic-ice.avif">
+    ### Imaging surface structure and premelting of ice Ih with atomic resolution
+
+    - [J. Hong *et al.* Nature 630, 375 (2024)](https://doi.org/10.1038/s41586-024-07427-8)
+    - \[News] [成果 | 王恩哥、陈基课题组与合作者揭示立方冰的生长过程](https://mp.weixin.qq.com/s/yXcGMOrxkGEDZooIj89lgQ)
+  </ResearchCard>
+
+  <ResearchCard image="research/2023-amc.avif">
+    ### Disorder-tuned conductivity in amorphous monolayer carbon
+
+    We present a theoretical model linking atomic-scale structures to macroscopic electrical properties of amorphous monolayer carbon (AMC). We propose two key order parameters to describe the degree of disorder (DOD): the medium-range order (MRO) and the density of nanocrystallites within the AMC structure. Numerical calculations demonstrate that variations in these parameters significantly influence the material's conductivity. Specifically, AMC films with well-defined MRO and higher nanocrystallite densities exhibit enhanced electrical conductivity, while those lacking MRO and with lower nanocrystallite densities become insulating. This theoretical framework provides a direct correlation between microstructural characteristics and the macroscopic electrical behavior of AMC, offering valuable insights for designing materials with tailored electronic properties.
+
+    - [H. Tian *et al.* Nature 615, 56-61 (2023)](https://doi.org/10.1038/s41586-022-05617-w)
+    - \[News] [成果 | 2020级本科生程谋阳与合作者揭示了二维非晶碳的构效关系](https://mp.weixin.qq.com/s/K66ueIraBxv0kHs1ING_2w)
+    - \[News] [成果 | 陈基课题组与合作者揭示二维非晶凝聚态体系中新的无序度](https://mp.weixin.qq.com/s/zhPbvjz8WkLufXRNP5QAmg)
+  </ResearchCard>
+
+  <ResearchCard image="research/2022-H2-on-graphene.avif">
+    ### Quantum Tunnelling Driven H<sub>2</sub> Formation on Graphene
+
+    - [E. Han *et al.* J. Phys. Chem. Lett. 13, 3173 (2022)](https://doi.org/10.1021/acs.jpclett.2c00520)
+  </ResearchCard>
+</div>
+
+<div class="cyan-theme">
+  ## AI-Assisted Materials Modeling
+
+  AI-assisted materials modeling is transforming the field by combining machine learning potentials and AI-driven property prediction to accelerate material discovery. Machine learning potentials enable efficient and accurate simulations of complex systems, while AI models predict key properties like stability and conductivity directly from structural inputs. These tools reduce computational costs and unlock new possibilities for designing advanced materials, from energy storage solutions to superconductors, driving faster innovation in materials science.
+
+  <ResearchCard image="research/2023-water-on-TiO2.avif">
+    ### Mechanistic insight on water dissociation on pristine low-index TiO<sub>2</sub> surfaces from machine learning molecular dynamics simulations
+
+    Water interactions with TiO<sub>2</sub> surfaces are key for technologies like solar cells and water splitting, but most research focuses on just two surfaces. Using machine learning simulations, we study seven pristine TiO<sub>2</sub> surfaces and find they behave differently---some break water apart, others keep it intact. These differences depend on surface structure and slab thickness, showing why simulations are crucial for understanding and designing real-world materials.
+
+    - [Z. Zeng *et al.* Nat Commun 14, 6131 (2023)](https://doi.org/10.1038/s41467-023-41865-8)
+  </ResearchCard>
+
+  <ResearchCard image="research/2022-nanoconfined-water.avif">
+    ### Nanoconfined water in first principles
+
+    Water in nanoscale spaces behaves very differently from bulk water, offering potential for wide applications. However, understanding its behavior is challenging due to experimental and computational limitations. Using first-principle simulations, we uncover diverse phases for nanoconfined water, including a hexatic phase and a superionic phase with high conductivity. Our findings suggest nanoconfinement could enable superionic behavior under accessible conditions, paving the way for innovative water engineering.
+
+    - [V. Kapil *et al.* Nature 609, 512 (2022)](https://doi.org/10.1038/s41586-022-05036-x)
+    - [T. Dufils *et al.* Chem. Sci. 15, 516 (2024)](https://doi.org/10.1039/D3SC04740G)
+  </ResearchCard>
+
+  <ResearchCard image="research/2024-sulfur-vacancy.avif">
+    ### Unveiling sulfur vacancy pairs as bright and stable color centers in monolayer WS<sub>2</sub>
+
+    We employed machine learning techniques to analyze cathodoluminescence (CL) microscopy data. By applying extreme gradient boost learning algorithms (XGBoost), we effectively identified specific sulfur vacancy pairs responsible for the observed bright and stable luminescence, and linked a direct structure-property relation between defect types and CL spectra. This approach facilitated a deeper understanding of the defect-related optical properties in monolayer MoS₂, highlighting the potential of machine learning in materials characterization.
+
+    - [H. Sun *et al.* Nat Commun 15, 9476 (2024)](https://doi.org/10.1038/s41467-024-53880-4)
+    - \[News] [原位电镜发现单层 WS<sub>2</sub> 的稳定色心原子构型 | 进展](https://mp.weixin.qq.com/s/79r4CnE7liNZFfFIxT5Lgg)
+  </ResearchCard>
+</div>

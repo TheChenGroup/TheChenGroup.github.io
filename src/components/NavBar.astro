@@ -1,0 +1,128 @@
+---
+import MdiMenu from "~icons/mdi/menu";
+
+import { Image } from "astro:assets";
+import geeeWide from "../images/geee_wide.svg";
+---
+
+<nav data-open="false">
+  <div class="first-row">
+    <a href="/" aria-label="home">
+      <Image class="nav-icon" src={geeeWide} alt="" loading="eager" />
+    </a>
+    <div class="spacer"></div>
+    <MdiMenu id="nav-toggle" />
+  </div>
+  <div class="spacer"></div>
+  <div class="links" style="max-height: 0;">
+    <a href="/">Home</a>
+    <a href="/research">Research</a>
+    <a href="/group">Group</a>
+    <a href="/publications">Publications</a>
+    <a href="/teaching">Teaching</a>
+    <a href="/photos">Photos</a>
+  </div>
+</nav>
+
+<script>
+  document.getElementById("nav-toggle")?.addEventListener("click", () => {
+    const nav = document.querySelector("nav");
+    const links = document.querySelector(".links") as HTMLDivElement | null;
+    if (!nav || !links) return;
+    if (nav.dataset.open === "true") {
+      nav.dataset.open = "false";
+      links.style.maxHeight = "0";
+    } else {
+      nav.dataset.open = "true";
+      links.style.maxHeight = `${links.scrollHeight}px`;
+    }
+  });
+</script>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    border-bottom: 1pt solid hsl(27deg 40% 95%);
+    padding: 0 20px;
+    background-image: radial-gradient(
+      ellipse at 50% 0,
+      hsl(39deg 97% 88% / 90%) 0,
+      hsl(39deg 97% 96% / 90%) 100%
+    );
+  }
+
+  @supports (backdrop-filter: blur(1ex)) {
+    nav {
+      backdrop-filter: saturate(200%) blur(1ex);
+      background-image: radial-gradient(
+        ellipse at 50% 0,
+        hsl(39deg 97% 88% / 80%) 0,
+        hsl(39deg 97% 98% / 80%) 80%
+      );
+    }
+  }
+
+  .nav-icon {
+    height: 4rem;
+    width: auto;
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+
+  .first-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .links {
+    overflow: hidden;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 1000ms;
+  }
+
+  .links > a {
+    display: block;
+    border-top: 1px dashed hsl(27deg 90% 85%);
+    padding: 5px 15px;
+    color: hsl(27deg 90% 45%);
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 2em;
+  }
+
+  .links > a:hover {
+    color: hsl(27deg 80% 60%);
+  }
+
+  #nav-toggle {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: hsl(27deg 90% 40%);
+  }
+
+  /* Desktop style */
+  @media screen and (width >= 1000px) {
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    #nav-toggle {
+      display: none;
+    }
+
+    .links {
+      max-height: 5rem !important;
+    }
+
+    .links > a {
+      display: inline;
+      border-top-width: 0;
+    }
+  }
+</style>

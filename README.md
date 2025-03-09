@@ -93,11 +93,34 @@ You can only edit one file at a time using this approach. This is best suited fo
 
 ### Option 2: Stackblitz
 
-Stackblitz allows you to run Node.js programs directly in your browser. Click the following button and login with your GitHub account:
+Stackblitz provides a seamless way to run Node.js programs directly in your browser. To get started, click the button below (Chrome browser is recommended):
 
 [![Open in Codeflow](https://developer.stackblitz.com/img/open_in_codeflow.svg)](https:///pr.new/TheChenGroup/TheChenGroup.github.io)
 
-This will start an Online VS Code editor. You can install the "Astro" and "MDX" for better editing experiences. After making changes, remember to create a new pull request.
+This will launch an Online VS Code editor where you can make your changes. Follow these steps to set up and contribute:
+
+1. **Log in to GitHub**:
+   After opening the project in Stackblitz, click the GitHub icon on the sidebar to authenticate your GitHub account.
+
+2. **Install extensions**:
+   For a smoother workflow, consider installing the following extensions in the editor:
+   - **Astro**: Provides support for Astro framework features.
+   - **MDX**: Enhances editing capabilities for MDX files.
+
+3. **Make Your Changes**:
+   Modify the files as needed. After that, go to the Git sidebar to create a new branch and commit your changes. Please don't commit the `pnpm-lock.yaml` file.
+
+4. **Create a Pull Request**:
+   Open the command palette (accessible via `Ctrl/Cmd + Shift + P`) and type `> create pull request`. Follow the prompts to submit your changes.
+
+5. **Verify Your Pull Request**:
+   If everything is set up correctly, your pull request will appear in the GitHub UI:
+
+   ![PR Screenshot](https://github.com/user-attachments/assets/6e09f59a-c055-45b9-812a-fb7b4451db01)
+
+6. **Await Review and Approval**:
+   The pull request will be reviewed by the repository admins. Once approved, it will be merged into the main branch.
+
 
 ## 🖥️ Local Development Guide
 

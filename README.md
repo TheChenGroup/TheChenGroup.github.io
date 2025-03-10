@@ -12,20 +12,20 @@ Live Site: https://TheChenGroup.github.io
 
 All pages are located at `src/pages`. Each page is a [MDX](https://mdxjs.com/) document. MDX is similar to Markdown, but can import components from `src/components` directory for a more customized display.
 
-```
-src
-├── images
-│   ├── members          # Individual headshots (3:4 aspect ratio)
-│   ├── photos           # Group photos
-│   └── research         # Research illustrations
-└── pages
-    ├── group.mdx        # Team members
-    ├── index.mdx        # Home page
-    ├── photos.mdx       # Group photos
-    ├── publications.mdx # List of research papers
-    ├── research.mdx     # Research and important papers
-    └── teaching.mdx     # Courses information
-```
+Folder structure in `src/`:
+- `images/`
+  - `members/`: Individual headshots (3:4 aspect ratio)
+  - `photos/`: Group photos
+  - `research/`: Research illustrations
+- `pages/`
+  - `index.mdx`: Home page ([Web Publisher](https://pr.new/github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/index.mdx), [GitHub](https://github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/index.mdx))
+  - `research.mdx`: Research and important papers ([Web Publisher](https://pr.new/github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/research.mdx), [GitHub](https://github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/research.mdx))
+  - `group.mdx`: Team members ([Web Publisher](https://pr.new/github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/group.mdx), [GitHub](https://github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/group.mdx))
+  - `publications.mdx`: List of research papers ([Web Publisher](https://pr.new/github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/publication.mdx), [GitHub](https://github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/publication.mdx))
+  - `teaching.mdx`: Courses information ([Web Publisher](https://pr.new/github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/teaching.mdx), [GitHub](https://github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/teaching.mdx))
+  - `photos.mdx`: Group photos ([Web Publisher](https://pr.new/github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/photos.mdx), [GitHub](https://github.com/TheChenGroup/TheChenGroup.github.io/edit/main/src/pages/photos.mdx))
+
+You can click the "Web Publisher" link in Chromium-based browser to edit a single file with live preview. To edit multiple files, please use [Codeflow](https:///pr.new/TheChenGroup/TheChenGroup.github.io). Alternatively, you can directly edit the files with GitHub UI by clicking the "GitHub" link.
 
 ### Adding a New Paper to Publication List
 
@@ -108,7 +108,7 @@ This will launch an Online VS Code editor where you can make your changes. Follo
    - **MDX**: Enhances editing capabilities for MDX files.
 
 3. **Make Your Changes**:
-   Modify the files as needed. After that, go to the Git sidebar to create a new branch and commit your changes. Please don't commit the `pnpm-lock.yaml` file.
+   Modify the files as needed. After that, go to the Git sidebar to create a new branch and commit your changes. Please don't commit the `pnpm-lock.yaml` file. Remember to commit and push your changes before closing the page.
 
 4. **Create a Pull Request**:
    Open the command palette (accessible via `Ctrl/Cmd + Shift + P`) and type `> create pull request`. Follow the prompts to submit your changes.

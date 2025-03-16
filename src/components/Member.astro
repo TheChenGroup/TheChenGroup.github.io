@@ -1,7 +1,7 @@
 ---
 import At from "~icons/mdi/at";
 import Email from "~icons/mdi/email";
-import Calendar from "~icons/mdi/calendar";
+import School from "~icons/mdi/account-school";
 import Flask from "~icons/mdi/flask";
 import { Image } from "astro:assets";
 import { getImageMetadata } from "../images";
@@ -29,7 +29,7 @@ const image = await getImageMetadata(Astro.props.image);
     <h3>{name}</h3>
     <div class="name-en">{nameEn}</div>
     <div class="list-item">
-      <Calendar class="bullet" />
+      <School class="bullet" />
       <div class="text">{year}&ndash;present</div>
     </div>
     <div class="list-item">

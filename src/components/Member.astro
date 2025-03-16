@@ -14,16 +14,17 @@ interface Props {
   year: string;
   email: string;
   interest: string;
+  hover?: string;
 }
 
-const { name, nameEn, year, email, interest } = Astro.props;
+const { name, nameEn, year, email, interest, hover } = Astro.props;
 
 const image = await getImageMetadata(Astro.props.image);
 ---
 
 <div class="student">
   <div class="image-holder">
-    <Image src={image} width={200} densities={[1.5, 2]} alt="" />
+    <Image src={image} width={200} densities={[1.5, 2]} alt="" title={hover} />
   </div>
   <div class="details">
     <h3>{name}</h3>

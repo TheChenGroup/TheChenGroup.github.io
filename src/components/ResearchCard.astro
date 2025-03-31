@@ -5,12 +5,13 @@ import { getImageMetadata } from "../images";
 
 interface Props {
   image: string | ImageMetadata;
+  class?: string;
 }
 
 const image = await getImageMetadata(Astro.props.image);
 ---
 
-<div class="research-card">
+<div class:list={["research-card", Astro.props.class]}>
   <div class="image-holder">
     <Image src={image} width={400} densities={[1.5, 2]} alt="" />
   </div>

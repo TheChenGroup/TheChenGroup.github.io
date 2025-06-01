@@ -35,7 +35,7 @@ const image = await getImageMetadata(Astro.props.image);
     </div>
     <div class="list-item">
       <Email class="bullet" />
-      <div class="text">
+      <div class="text email">
         {email.slice(0, email.indexOf("@"))}
         <At class="at" />
         <div class="invisible">no.robot.scrape</div>
@@ -122,5 +122,14 @@ const image = await getImageMetadata(Astro.props.image);
 
   .details .invisible {
     display: none;
+  }
+
+  .details .email {
+    filter: blur(5px);
+    transition: all linear 0.5s;
+  }
+
+  .student:hover .details .email {
+    filter: blur(0);
   }
 </style>

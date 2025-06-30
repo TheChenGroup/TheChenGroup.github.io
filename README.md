@@ -13,6 +13,7 @@ Live Site: https://TheChenGroup.github.io
 All pages are located at `src/pages`. Each page is a [MDX](https://mdxjs.com/) document. MDX is similar to Markdown, but can import components from `src/components` directory for a more customized display.
 
 Folder structure in `src/`:
+
 - `images/`
   - `members/`: Individual headshots (3:4 aspect ratio)
   - `photos/`: Group photos
@@ -29,10 +30,12 @@ You can click the "Web Publisher" link in Chromium-based browser to edit a singl
 
 ### Adding a New Paper to Publication List
 
-This project uses a custom format to store publication information. Use the following command to generate it from DOI:
+This project uses a custom format to store publication information. The easiest way is to use GitHub workflows. Go to [Add new publication workflow page](https://github.com/TheChenGroup/TheChenGroup.github.io/actions/workflows/new-paper.yml), click on "Run workflow", and enter the DOI (e.g. `10.1038/s43588-024-00730-4`). A new pull request will automatically be created.
+
+Alternatively, you can use the following command to generate it from DOI:
 
 ```bash
-node scripts/doi2yaml.mjs 10.1038/s43588-024-00730-4
+python scripts/doi2yaml.py 10.1038/s43588-024-00730-4
 ```
 
 Example output:
@@ -120,7 +123,6 @@ This will launch an Online VS Code editor where you can make your changes. Follo
 
 6. **Await Review and Approval**:
    The pull request will be reviewed by the repository admins. Once approved, it will be merged into the main branch.
-
 
 ## 🖥️ Local Development Guide
 

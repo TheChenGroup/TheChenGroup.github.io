@@ -29,5 +29,5 @@ jobs:
         with:
           commit-message: add "${{ github.event.inputs.doi }}"
           branch: doi/${{ github.event.inputs.doi }}
-          title: Add paper ${{ github.event.inputs.doi }}
-          body: Automated changes by GitHub Actions
+          title: add paper ${{ github.event.inputs.doi }}
+          body: ''

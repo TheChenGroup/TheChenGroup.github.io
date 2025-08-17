@@ -6,6 +6,8 @@ on:
       - main
     tags-ignore:
       - "**"
+    paths-ignore:
+      - ".github/workflows/new-paper.yml"
 
 permissions:
   contents: read

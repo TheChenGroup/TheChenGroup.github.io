@@ -23,7 +23,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
       - name: Add Publication
-        run: uv run scripts/doi2yaml.py -i "${{ github.event.inputs.doi }}"
+        run: uv run scripts/doi2yaml.py -i ${{ github.event.inputs.doi }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:

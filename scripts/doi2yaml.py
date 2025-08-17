@@ -1,5 +1,6 @@
 # /// script
 # dependencies = [
+#   "arxiv",
 #   "requests",
 #   "PyYAML",
 # ]
@@ -9,42 +10,25 @@ import sys
 from pathlib import Path
 from urllib3.util import Retry
 
+import arxiv
 import requests
 import yaml
 from requests.adapters import HTTPAdapter
 
 
-def convert(paper: dict) -> dict:
-    authors = [
-        f"{author['given']} {author['family']}"
-        for author in paper.get("author", [])
-        if author.get("family")
-    ]
-    year = paper["issued"]["date-parts"][0][0]
-
-    base_data = {
-        "title": paper["title"][0],
-        "doi": paper.get("DOI"),
-        "authors": authors,
+def fetch_arxiv(doi: str) -> dict:
+    arxiv_id = doi.lower().split("arxiv.")[-1]
+    client = arxiv.Client()
+    paper = next(client.results(arxiv.Search(id_list=[arxiv_id])))
+    return {
+        "title": paper.title,
+        "doi": doi,
+        "authors": [author.name for author in paper.authors],
+        "journal": "arXiv",
+        "volume": None,
+        "page": arxiv_id,
+        "year": paper.published.year,
     }
-
-    if paper.get("publisher") == "arXiv":
-        return {
-            **base_data,
-            "journal": "arXiv",
-            "volume": None,
-            "page": paper.get("number"),
-            "year": year,
-        }
-    else:
-        journal = paper.get("short-container-title", paper.get("container-title"))[0]
-        return {
-            **base_data,
-            "journal": journal,
-            "volume": paper.get("volume"),
-            "page": paper.get("page", paper.get("article-number")),
-            "year": year,
-        }
 
 
 def fetch_crossref(doi: str) -> dict:
@@ -68,13 +52,36 @@ def fetch_crossref(doi: str) -> dict:
         print(data.get("message"), file=sys.stderr)
         sys.exit(1)
 
-    return data["message"]
+    paper = data["message"]
+
+    return {
+        "title": paper["title"][0],
+        "doi": paper.get("DOI"),
+        "authors": [
+            f"{author['given']} {author['family']}"
+            for author in paper.get("author", [])
+            if author.get("family")
+        ],
+        "journal": paper.get("short-container-title", paper.get("container-title"))[0],
+        "volume": paper.get("volume"),
+        "page": paper.get("page", paper.get("article-number")),
+        "year": paper["issued"]["date-parts"][0][0],
+    }
+
+
+def fetch_doi(doi: str) -> dict:
+    if "arxiv" in doi.lower():
+        return fetch_arxiv(doi)
+    else:
+        return fetch_crossref(doi)
 
 
 def doi2yaml(dois: list[str]) -> list[str]:
     result = []
     for doi in dois:
-        yaml_string = yaml.dump([convert(fetch_crossref(doi))], sort_keys=False).strip()
+        yaml_string = yaml.dump(
+            [fetch_doi(doi)], sort_keys=False, allow_unicode=True
+        ).strip()
         print(yaml_string)
         result.append(yaml_string)
     return result

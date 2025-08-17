@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   update-file:
-    name: Add publication ${{ github.event.inputs.doi }}
+    name: Add publication
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,13 +22,16 @@ jobs:
           fetch-depth: 0
       - name: Install uv
         uses: astral-sh/setup-uv@v5
-      - name: Add Publication
-        run: uv run scripts/doi2yaml.py -i ${{ github.event.inputs.doi }}
+      - name: Add Publication and Generate Hash
+        id: add_paper
+        run: |
+          uv run scripts/doi2yaml.py -i ${{ github.event.inputs.doi }}
+          echo "doi_hash=$(echo -n '${{ github.event.inputs.doi }}' | shasum -a 256 | cut -d' ' -f1)" >> $GITHUB_OUTPUT
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: add paper ${{ github.event.inputs.doi }}
-          branch: doi/${{ github.event.inputs.doi }}
+          branch: doi/${{ steps.add_paper.outputs.doi_hash }}
           title: add paper ${{ github.event.inputs.doi }}
           body: >
             You can use GitHub workflows to create or update pull requests adding new papers.

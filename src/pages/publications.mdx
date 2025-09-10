@@ -1157,6 +1157,7 @@ publications:
   volume: '38'
   page: 35-61
   year: 2019
+publications_before:
 - title: Sticky when wet
   doi: 10.1038/s41557-018-0024-9
   authors:
@@ -1483,4 +1484,10 @@ import Publications from "../components/Publications.astro"
 
 # Publications
 
-<Publications publications={frontmatter.publications} />
+<Publications publications={frontmatter.publications} start={frontmatter.publications_before.length} />
+
+<details>
+  <summary>Ji Chen's publications before 2019</summary>
+
+  <Publications publications={frontmatter.publications_before} />
+</details>

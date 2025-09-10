@@ -30,7 +30,10 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: add paper ${{ github.event.inputs.doi }}
+          commit-message: |
+            add paper ${{ github.event.inputs.doi }}
+
+            Triggered by ${{ github.actor }}
           branch: paper-update/${{ steps.add_paper.outputs.doi_hash }}
           title: add paper ${{ github.event.inputs.doi }}
           body: >

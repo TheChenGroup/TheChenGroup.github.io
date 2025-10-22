@@ -1,0 +1,25 @@
+name: Sync with Zotero
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "48 21 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-file:
+    name: Sync Zotero
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v5
+      - run: uv run scripts/sync_zotero.py
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: sync Zotero publications
+          branch: paper-update/zotero

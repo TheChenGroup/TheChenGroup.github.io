@@ -30,37 +30,9 @@ You can click the "Web Publisher" link in Chromium-based browser to edit a singl
 
 ### Adding a New Paper to Publication List
 
-This project uses a custom format to store publication information. The easiest way is to use GitHub workflows. Go to [Add new publication workflow page](https://github.com/TheChenGroup/TheChenGroup.github.io/actions/workflows/new-paper.yml), click on "Run workflow", and enter the DOI (e.g. `10.1038/s43588-024-00730-4`). A new pull request will automatically be created.
+This project uses a custom format to store publication information. The easiest way is to use Zotero. Join our group in Zotero with https://www.zotero.org/groups/6251966/geee, and add your paper in it. The changes will automatically be picked up by GitHub once a day. If you are impatient, go to [the workflow page](https://github.com/TheChenGroup/TheChenGroup.github.io/actions/workflows/sync-zotero.yml) and click on "Run workflow". A new pull request will automatically be created.
 
-Alternatively, you can use the following command to generate it from DOI:
-
-```bash
-python scripts/doi2yaml.py 10.1038/s43588-024-00730-4
-```
-
-Example output:
-
-```yaml
-- title: >-
-    Spin-symmetry-enforced solution of the many-body Schrödinger equation with a
-    deep neural network
-  doi: 10.1038/s43588-024-00730-4
-  authors:
-    - Zhe Li
-    - Zixiang Lu
-    - Ruichen Li
-    - Xuelan Wen
-    - Xiang Li
-    - Liwei Wang
-    - Ji Chen
-    - Weiluo Ren
-  journal: Nat Comput Sci
-  volume: "4"
-  page: 910-919
-  year: 2024
-```
-
-Paste the output YAML to `src/pages/publications.mdx` frontmatter.
+Manual modifications to `src/pages/publications.mdx` frontmatter is discouraged.
 
 ### Adding a New Research Highlight
 

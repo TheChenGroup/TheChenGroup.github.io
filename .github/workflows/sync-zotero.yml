@@ -23,3 +23,5 @@ jobs:
         with:
           commit-message: sync Zotero publications
           branch: paper-update/zotero
+          title: sync Zotero publications
+          body: sync Zotero publications

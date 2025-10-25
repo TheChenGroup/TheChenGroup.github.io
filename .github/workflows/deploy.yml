@@ -1,4 +1,4 @@
-name: Build and Deploy to gh-pages
+name: Check and deploy to gh-pages
 
 on:
   push:
@@ -6,8 +6,6 @@ on:
       - main
     tags-ignore:
       - "**"
-    paths-ignore:
-      - ".github/workflows/new-paper.yml"
 
 permissions:
   contents: read
@@ -18,6 +16,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  check:
+    name: Checking missing information
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Run check
+        id: check
+        run: |
+          echo 'output<<EOF' >> $GITHUB_OUTPUT
+          uv run scripts/missing_info.py >> $GITHUB_OUTPUT
+          echo EOF >> $GITHUB_OUTPUT
+      - uses: actions/github-script@v8
+        with:
+          script: |
+            github.rest.issues.update({
+              ...context.repo,
+              issue_number: 13,
+              body: `${{ steps.check.outputs.output }}`
+            });
+
   build:
     name: Build the Pages
     runs-on: ubuntu-latest

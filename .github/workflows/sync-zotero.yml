@@ -8,7 +8,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  issues: write
 
 jobs:
   update-file:
@@ -26,23 +25,3 @@ jobs:
           branch: paper-update/zotero
           title: sync Zotero publications
           body: sync Zotero publications
-
-  missing-info:
-    name: Checking missing information
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
-      - name: Run check
-        id: check
-        run: |
-          OUTPUT=$(uv run scripts/missing_info.py)
-          { echo 'output<<EOF'; echo "${OUTPUT}"; echo EOF; } >> $GITHUB_OUTPUT
-      - uses: actions/github-script@v8
-        with:
-          script: |
-            github.rest.issues.update({
-              ...context.repo,
-              issue_number: 13,
-              body: `${{ steps.check.outputs.output }}`
-            });

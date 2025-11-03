@@ -30,7 +30,11 @@ You can click the "Web Publisher" link in Chromium-based browser to edit a singl
 
 ### Adding a New Paper to Publication List
 
-This project uses a custom format to store publication information. The easiest way is to use Zotero. Join our group in Zotero with https://www.zotero.org/groups/6251966/geee, and add your paper in it. The changes will automatically be picked up by GitHub once a day. If you are impatient, go to [the workflow page](https://github.com/TheChenGroup/TheChenGroup.github.io/actions/workflows/sync-zotero.yml) and click on "Run workflow". A new pull request will automatically be created.
+This project uses a custom format to store publication information. The easiest way is to use Zotero. Join our group in Zotero with https://www.zotero.org/groups/6251966/geee, and add drag your paper (usually from "My Publications" collection in your own library) into the "Publications" collection in the group library. 
+
+![Drag item into Publications collection](https://github.com/user-attachments/assets/c33e333a-5282-4a20-86d2-54bdc2a7dc40)
+
+The changes will automatically be picked up by GitHub once a day. If you are impatient, go to [the workflow page](https://github.com/TheChenGroup/TheChenGroup.github.io/actions/workflows/sync-zotero.yml) and click on "Run workflow". A new pull request will automatically be created.
 
 Manual modifications to `src/pages/publications.mdx` frontmatter is discouraged.
 

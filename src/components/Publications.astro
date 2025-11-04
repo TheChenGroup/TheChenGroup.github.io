@@ -14,10 +14,12 @@ interface Props {
   start?: number;
 }
 
+const arXivPaper = (paper) => paper.page.toString().toLowerCase().startsWith("arxiv")
+
 const { publications, start = 0 } = Astro.props;
 
 let count =
-  publications.filter((paper) => paper.journal !== "arXiv").length + start;
+  publications.filter((paper) => !arXivPaper(paper)).length + start;
 const publicationGroup: Map<number, Publication[]> = new Map();
 let year = 0;
 for (const publication of publications) {
@@ -38,7 +40,7 @@ for (const publication of publications) {
           <h2>{year}</h2>
           <ol>
             {publications.map((publication) => (
-              <li value={publication.journal === "arXiv" ? -1 : count--}>
+              <li value={arXivPaper(publication) ? -1 : count--}>
                 <a
                   target="_blank"
                   rel="noopener noreferrer"

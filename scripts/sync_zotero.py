@@ -29,8 +29,8 @@ def format_zotero_item(item):
             ],
             "journal": paper.get("journalAbbreviation")
             or paper.get("publicationTitle"),
-            "volume": paper.get("volume"),
-            "page": paper.get("pages") or paper.get("archiveID"),
+            "volume": paper.get("volume") or "",
+            "page": paper.get("pages") or paper.get("archiveID") or "",
             "year": int(meta["parsedDate"][:4]),
         }
     except KeyError as e:

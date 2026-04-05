@@ -14,7 +14,7 @@ import geeeWide from "../images/geee_wide.svg";
     <MdiMenu id="nav-toggle" />
   </div>
   <div class="spacer"></div>
-  <div class="links" style="max-height: 0;">
+  <div class="links">
     <a href="/">Home</a>
     <a href="/research">Research</a>
     <a href="/group">Group</a>
@@ -83,6 +83,10 @@ import geeeWide from "../images/geee_wide.svg";
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 1000ms;
+  }
+
+  nav[data-open="false"] .links {
+    max-height: 0;
   }
 
   .links > a {

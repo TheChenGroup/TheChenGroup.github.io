@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 import rehypeExternalLinks from "rehype-external-links";
 import Icons from "unplugin-icons/vite";
@@ -10,8 +10,30 @@ import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      weights: [400, 600, 700],
+      styles: ["normal"],
+      subsets: ["latin"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      weights: [400],
+      styles: ["italic"],
+      subsets: ["latin"],
+    },
+  ],
   integrations: [mdx()],
+  security: {
+    csp: true,
+  },
   markdown: {
+    syntaxHighlight: false,
     remarkPlugins: [
       // dashes limilar to LaTeX
       // @ts-ignore

@@ -18,10 +18,12 @@ jobs:
         with:
           fetch-depth: 0
       - uses: astral-sh/setup-uv@v5
-      - run: uv run scripts/sync_zotero.py
+      - name: Sync Zotero data
+        id: sync
+        run: uv run scripts/sync_zotero.py
       - uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: sync Zotero publications
+          commit-message: ${{ steps.sync.outputs.commit_message }}
           branch: paper-update/zotero
-          title: sync Zotero publications
-          body: sync Zotero publications
+          title: ${{ steps.sync.outputs.pr_title }}
+          body: ${{ steps.sync.outputs.pr_body }}

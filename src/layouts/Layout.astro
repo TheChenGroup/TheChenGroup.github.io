@@ -32,23 +32,19 @@ const title = Astro.props.frontmatter.title;
       <slot />
     </main>
   </body><footer>
-    <div>&copy; 2018&ndash;2025, Ji Chen's Group</div>
+    <div>&copy; 2018&ndash;2026, Ji Chen's Group</div>
   </footer>
 
   <script>
-    const lastUpdate = parseInt(localStorage.getItem("lastUpdate") ?? "0", 10);
-    const currentTime = new Date().getTime();
-    if (currentTime - lastUpdate > 24 * 3600 * 1000) {
-      fetch("https://faculty.pku.edu.cn/system/resource/tsites/praise.jsp", {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: "uid=1959&homepageid=1623&apptype=index&contentid=0&pdtype=0&limttype=specilpage&limithour=0&ac=updatePraise",
-        method: "POST",
-        mode: "cors",
-      });
-      localStorage.setItem("lastUpdate", currentTime.toString());
-    }
+    fetch("https://faculty.pku.edu.cn/system/resource/tsites/click.jsp", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        lc: "/chenji/en/index.htm",
+        hosts: "faculty.pku.edu.cn",
+        ac: "updateVisit",
+      }),
+    });
   </script>
 
   <style is:global>

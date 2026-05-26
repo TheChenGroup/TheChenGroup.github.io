@@ -20,7 +20,7 @@ def format_zotero_item(item):
     paper = item["data"]
     meta = item["meta"]
     try:
-        return {
+        result = {
             "title": paper["title"],
             "doi": paper["DOI"],
             "authors": [
@@ -37,6 +37,11 @@ def format_zotero_item(item):
     except KeyError as e:
         print(item)
         raise e from None
+
+    return {
+        k: v.replace("\u2010", "-").replace("\u2011", "-") if isinstance(v, str) else v
+        for k, v in result.items()
+    }
 
 
 def all_items_from_zotero():
@@ -179,7 +184,6 @@ def sync_with_zotero():
     ]
     frontmatter["publications"] = new_publications
     yaml_string = yaml.dump(frontmatter, sort_keys=False, allow_unicode=True).strip()
-    yaml_string = yaml_string.replace("\u2010", "-")
     lines[1:segment_line_no] = [yaml_string]
     PUBLICATIONS_MD.write_text("\n".join(lines))
 

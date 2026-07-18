@@ -32,13 +32,14 @@ import ResearchCard from "../components/ResearchCard.astro"
 
 # Research Highlights
 
-<ResearchCard class="red-theme" image="research/2025-deephall.avif">
-  ### DeepHall framework for QMC study of fractional quantum Hall system
+<ResearchCard class="red-theme" image="research/2026-pseudo-hamiltonian.avif">
+  ### Pseudo-Hamiltonian for NNQMC study of large quantum many-body systems
 
-  Strong correlation drives exotic emergent phenomena, challenging to model—fractional quantum Hall systems being a key example. Traditional methods often neglect Landau level mixing due to its complexity, even though this mixing can significantly alter the ground state. We propose the DeepHall deep learning framework and apply it to FQH systems at 1/3 and 2/5 fillings, naturally including higher Landau levels and achieving lower energies than lower Landau level exact diagonalization, matching state-of-the-art methods like fp-DMC. This highlights deep learning's potential to advance studies of strongly correlated systems.
+  Computing the quantum behavior of interacting electrons is central to chemistry and physics, but scaling wavefunction simulations to large, strongly correlated systems remains computationally prohibitive. While neural network-based quantum Monte Carlo (NNQMC) shows great promise, conventional semi-local pseudopotentials introduce expensive nonlocal terms that severely bottleneck efficiency. We integrate fully local pseudopotentials (pseudo-Hamiltonians) into NNQMC and apply them to main-group elements and complex iron–sulfur clusters. By eliminating costly nonlocal integrations, our approach accelerates NNQMC by over an order of magnitude while preserving high accuracy, unlocking the simulation of previously inaccessible strongly correlated systems.
 
-  - [Y. Qian *et al.* Phys. Rev. Lett. 134, 176503 (2025)](https://doi.org/10.1103/PhysRevLett.134.176503)
-  - \[News] [成果 | 陈基课题组与合作者开发分数量子霍尔态的深度学习量子蒙特卡洛算法](https://mp.weixin.qq.com/s/9KnSeaJR6f2sxWNTVULjig)
+  - [W. Fu *et al.* Nat Comput Sci (2026)](https://doi.org/10.1038/s43588-026-01008-7)
+  - [Research Briefing](https://doi.org/10.1038/s43588-026-01027-4)
+  - \[News] [成果丨赝哈密顿量赋能神经网络量子蒙特卡洛方法](https://mp.weixin.qq.com/s/yhmKDDD-nkTVDycx1uRArw)
 </ResearchCard>
 
 Explore our [research page](/research) and [publication list](/publications) to learn more about our work. Developed code is available on [GitHub](https://github.com/TheChenGroup).

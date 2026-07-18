@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 
 import rehypeExternalLinks from "rehype-external-links";
 import Icons from "unplugin-icons/vite";
@@ -33,14 +34,16 @@ export default defineConfig({
     csp: true,
   },
   markdown: {
-    syntaxHighlight: false,
-    remarkPlugins: [
-      // dashes limilar to LaTeX
-      // @ts-ignore
-      [remarkSmartypants, { dashes: "oldschool" }],
-      remarkMath,
-    ],
-    rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }], rehypeKatex],
+    processor: unified({
+      syntaxHighlight: false,
+      remarkPlugins: [
+        // dashes limilar to LaTeX
+        // @ts-ignore
+        [remarkSmartypants, { dashes: "oldschool" }],
+        remarkMath,
+      ],
+      rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }], rehypeKatex],
+    }),
   },
   vite: {
     plugins: [

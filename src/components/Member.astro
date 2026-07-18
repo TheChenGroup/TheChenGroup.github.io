@@ -37,7 +37,9 @@ const image = await getImageMetadata(Astro.props.image);
       <Email class="bullet" />
       <div class="text email">
         {email.slice(0, email.indexOf("@"))}
+        &nbsp;
         <At class="at" />
+        &nbsp;
         <div class="invisible">no.robot.scrape</div>
         {email.slice(email.indexOf("@") + 1)}
       </div>

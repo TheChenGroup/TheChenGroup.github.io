@@ -32,14 +32,13 @@ import ResearchCard from "../components/ResearchCard.astro"
 
 # Research Highlights
 
-<ResearchCard class="red-theme" image="research/2026-pseudo-hamiltonian.avif">
-  ### Pseudo-Hamiltonian for NNQMC study of large quantum many-body systems
+<ResearchCard class="red-theme" image="research/2026-particle-view.avif">
+  ### Particle view of many-body electronic structure
 
-  Computing the quantum behavior of interacting electrons is central to chemistry and physics, but scaling wavefunction simulations to large, strongly correlated systems remains computationally prohibitive. While neural network-based quantum Monte Carlo (NNQMC) shows great promise, conventional semi-local pseudopotentials introduce expensive nonlocal terms that severely bottleneck efficiency. We integrate fully local pseudopotentials (pseudo-Hamiltonians) into NNQMC and apply them to main-group elements and complex iron–sulfur clusters. By eliminating costly nonlocal integrations, our approach accelerates NNQMC by over an order of magnitude while preserving high accuracy, unlocking the simulation of previously inaccessible strongly correlated systems.
+  Neural network wavefunctions can now provide near-exact ground-state solutions for molecules and solids, but their high-dimensional nature makes direct human interpretation intractable. We develop periodic dynamic Voronoi Metropolis sampling (PDVMS) to extract classical electron configurations from neural network wavefunctions and connect them with intuitive valence-bond pictures. Applying this framework, we quantitatively resolve the competing valence-bond structures of benzene and extend the particle view to periodic solids, revealing a spin-staggered valence-bond structure in graphene rather than the conventional mixed single-double bond network. The particle view further reveals how the spin-staggered structure emerges during wavefunction optimization and offers an intuitive explanation for emergent magnetism in graphene-based nanostructures. PDVMS thus provides a complementary framework for understanding many-body electronic structure.
 
-  - [W. Fu *et al.* Nat Comput Sci (2026)](https://doi.org/10.1038/s43588-026-01008-7)
-  - [Research Briefing](https://doi.org/10.1038/s43588-026-01027-4)
-  - \[News] [成果丨赝哈密顿量赋能神经网络量子蒙特卡洛方法](https://mp.weixin.qq.com/s/yhmKDDD-nkTVDycx1uRArw)
+  - [Z. Wang *et al.* Phys. Rev. X 16, 31048 (2026)](https://doi.org/10.1103/g6v2-grnl)
+  - \[News] [成果丨粒子视角理解多体电子结构](https://mp.weixin.qq.com/s/fOyo71QObWD90OMoZigRGA)
 </ResearchCard>
 
 Explore our [research page](/research) and [publication list](/publications) to learn more about our work. Developed code is available on [GitHub](https://github.com/TheChenGroup).
